@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :authentication do
-    user { "" }
-    token { "MyString" }
-    active { false }
+    user { create(:user) }
+    token { Faker::Internet.uuid }
+    active { true }
   end
 end
