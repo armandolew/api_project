@@ -14,7 +14,8 @@ class Authentication < ApplicationRecord
   private
 
   def disable_previous_authentications
-    self.user.authentications.update_column(active: false)
+    return unless self.user.authentications.any?
+    self.user.authentications.update_all(active: false)
   end
 
   def set_token
