@@ -1,7 +1,10 @@
 class Authentication < ApplicationRecord
   belongs_to :user
 
+  scope :active, -> { where(active: true) }
+
   before_validation do
+    binding.pry
     disable_previous_authentications
     set_token
   end

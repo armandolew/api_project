@@ -6,7 +6,7 @@ module Api
 
     def authenticate
       authenticate_or_request_with_http_token do |token, _options|
-        authentication = Authentication.find_by!(token: token)
+        authentication = Authentication.active.find_by!(token: token)
 
         return authentication.user
       end

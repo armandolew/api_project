@@ -3,7 +3,7 @@ class LoginController < ApplicationController
     params.require(:email)
     params.require(:password)
 
-    user = User.find_by!(email: params[:email])
+    user = current_company.users.find_by!(email: params[:email])
     if user.authenticate(params[:password])
       authentication = user.authentications.new
       authentication.save!
